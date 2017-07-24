@@ -4,13 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "npm run clean && npm run build:module",
-    "build:dll": "webpack --config config/webpack.dll.js --progress --profile --bail",
-    "build:app": "webpack --config config/webpack.app.js --progress --profile --bail",
-    "build:module": "webpack --config config/webpack.module.js --progress --profile --bail --watch",
     "build-ui": "webpack --config config/webpack.dev.js",
-    "start": "concurrently \"node celine.js\"  \"node fragment.js\" \"npm run build-ui\""
+    "build-makola": "npm run start:makola --prefix node_modules/@celine/frontdoor",
+    "build-threshold": "npm run start:threshold --prefix node_modules/@celine/frontdoor",
+    "start-makola": "concurrently \"npm run build-makola\"  \"npm run build-ui\"",
+    "start-threshold": "concurrently \"npm run build-threshold\"  \"npm run build-ui\""
   },
   "author": "Barclays Africa Technologies",
   "license": "MIT",
@@ -48,7 +46,7 @@
   },
   "devDependencies": {
     "@angular/language-service": "^4.0.0",
-    "@celine/frontdoor": "1.0.5",
+    "@celine/frontdoor": "1.0.6",
     "@ngrx/store-devtools": "^3.2.4",
     "@types/core-js": "^0.9.41",
     "@types/hammerjs": "^2.0.34",
@@ -66,6 +64,7 @@
     "concurrently": "^3.5.0",
     "connect": "^3.6.2",
     "copy-webpack-plugin": "^4.0.1",
+    "cross-env": "^5.0.1",
     "css-loader": "^0.28.1",
     "cssnano": "^3.10.0",
     "exports-loader": "^0.6.3",
