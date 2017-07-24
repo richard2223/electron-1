@@ -24,7 +24,7 @@ module.exports = function (options) {
 
         entry: {
             main: [
-                `./src/main.ts`
+                `./src/app/module.main.ts`
             ],
 
         },

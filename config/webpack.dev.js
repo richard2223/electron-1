@@ -22,12 +22,12 @@ module.exports = function (options) {
   return webpackMerge(commonConfig({env: ENV}), {
     devtool: 'cheap-module-source-map',
     output: {
-      path: helpers.root('dist'),
-      filename: '[name].bundle.js',
-      sourceMapFilename: '[file].map',
-      chunkFilename: '[id].chunk.js',
-      library: 'ac_[name]',
-      libraryTarget: 'var',
+        path: helpers.root('dist'),
+        publicPath: 'http://localhost:8080/',
+        filename: 'module.js',
+        libraryTarget: 'umd',
+        umdNamedDefine: true,
+        devtoolModuleFilenameTemplate: '[resource-path]'
     },
 
     module: {
@@ -69,31 +69,31 @@ module.exports = function (options) {
 
     ],
 
-    devServer: {
-      port: METADATA.port,
-      host: METADATA.host,
-      historyApiFallback: true,
-      watchOptions: {
-        // if you're using Docker you may need this
-        // aggregateTimeout: 300,
-        // poll: 1000,
-        ignored: /node_modules/
-      },
-      setup: function(app) {
-        // For example, to define custom handlers for some paths:
-        // app.get('/some/path', function(req, res) {
-        //   res.json({ custom: 'response' });
-        // });
-      }
-    },
-    node: {
-      global: true,
-      crypto: 'empty',
-      process: true,
-      module: false,
-      clearImmediate: false,
-      setImmediate: false
-    }
+    // devServer: {
+    //   port: METADATA.port,
+    //   host: METADATA.host,
+    //   historyApiFallback: true,
+    //   watchOptions: {
+    //     // if you're using Docker you may need this
+    //     // aggregateTimeout: 300,
+    //     // poll: 1000,
+    //     ignored: /node_modules/
+    //   },
+    //   setup: function(app) {
+    //     // For example, to define custom handlers for some paths:
+    //     // app.get('/some/path', function(req, res) {
+    //     //   res.json({ custom: 'response' });
+    //     // });
+    //   }
+    // },
+    // node: {
+    //   global: true,
+    //   crypto: 'empty',
+    //   process: true,
+    //   module: false,
+    //   clearImmediate: false,
+    //   setImmediate: false
+    // }
 
   });
 }

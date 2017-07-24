@@ -38,6 +38,8 @@ import { ROUTES } from './app.routes';
 import { AboutComponent } from "./about/about.component";
 import { HomeComponent } from "./home/home.component";
 import { AppComponent } from "./app.component";
+import { NoContentComponent } from "./no-content/no-content.component";
+
 
 
 @NgModule({
@@ -95,13 +97,19 @@ import { AppComponent } from "./app.component";
         AppComponent,
         AboutComponent,
         HomeComponent,
-        // WidgetComponent,
+        NoContentComponent
     ],
     entryComponents: [
         AppComponent,
     ],
     providers: [
 
+    ],
+    exports: [
+        AppComponent,
+        AboutComponent,
+        HomeComponent,
+        NoContentComponent
     ],
     bootstrap: [AppComponent]
 })
