@@ -11,6 +11,8 @@ const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
 
 
+
+
 const METADATA = {
     title: 'Micro UI project',
     baseUrl: '/',
@@ -24,16 +26,13 @@ module.exports = function (options) {
 
         entry: {
             main: [
-                `./src/app/module.main.ts`
-            ],
-
+                './src/app/module.main.ts'
+            ]
         },
 
         resolve: {
             extensions: ['.ts', '.js', '.json'],
-
             modules: [helpers.root('src'), helpers.root('node_modules')],
-
         },
 
         module: {
@@ -57,6 +56,10 @@ module.exports = function (options) {
                     test: /\.scss$/,
                     use: ['to-string-loader', 'css-loader', 'sass-loader'],
                     exclude: [helpers.root('src', 'styles')]
+                },
+                {
+                    test: /bootstrap\/dist\/js\/umd\//,
+                    use: 'imports-loader?jQuery=jquery'
                 },
                 {
                     test: /\.html$/,
@@ -87,6 +90,32 @@ module.exports = function (options) {
                 isProd ? { ignore: ['mock-data/**/*'] } : undefined
             ),
             new LoaderOptionsPlugin({}),
+            new webpack.DllReferencePlugin({
+                context: '.',
+                manifest: require(helpers.root('./node_modules/@celine/frontdoor/dist', 'polyfills-manifest.json'))
+            }),
+            new webpack.DllReferencePlugin({
+                context: '.',
+                manifest: require(helpers.root('./node_modules/@celine/frontdoor/dist', 'vendor_angular-manifest.json'))
+            }),
+            new webpack.ProvidePlugin({
+                $: "jquery",
+                jQuery: "jquery",
+                "window.jQuery": "jquery",
+                Tether: "tether",
+                "window.Tether": "tether",
+                Alert: "exports-loader?Alert!bootstrap/js/dist/alert",
+                Button: "exports-loader?Button!bootstrap/js/dist/button",
+                Carousel: "exports-loader?Carousel!bootstrap/js/dist/carousel",
+                Collapse: "exports-loader?Collapse!bootstrap/js/dist/collapse",
+                Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+                Modal: "exports-loader?Modal!bootstrap/js/dist/modal",
+                Popover: "exports-loader?Popover!bootstrap/js/dist/popover",
+                Scrollspy: "exports-loader?Scrollspy!bootstrap/js/dist/scrollspy",
+                Tab: "exports-loader?Tab!bootstrap/js/dist/tab",
+                Tooltip: "exports-loader?Tooltip!bootstrap/js/dist/tooltip",
+                Util: "exports-loader?Util!bootstrap/js/dist/util",
+            })
         ],
         node: {
             global: true,

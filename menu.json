@@ -1,0 +1,32 @@
+[
+    {
+        "name": "info",
+        "host": "http://localhost:4200/module.js#InfoModule",
+        "components": [
+            {
+                "text": "Welcome",
+                "url": "/",
+                "icon": "fa fa-users",
+                "roles": []
+            }
+        ]
+    },
+    {
+        "name": "sample",
+        "host": "http://localhost:4200/module.js#SampleModule",
+        "components": [
+            {
+                "text": "Features",
+                "url": "/features",
+                "icon": "fa fa-globe",
+                "roles": []
+            },
+            {
+                "text": "To do App",
+                "url": "/todo",
+                "icon": "fa fa-cogs",
+                "roles": []
+            }
+        ]
+    }
+]
