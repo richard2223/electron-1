@@ -6,7 +6,8 @@
   "scripts": {
     "build-ui": "webpack-dev-server --config config/webpack.dev.js --watch",
     "start-celine": "npm run start --prefix node_modules/@celine/frontdoor",
-    "start": "npm run build-ui"
+    "start": "npm run build-ui",
+    "publish": "webpack --config config/webpack.dev.js "
   },
   "author": "Barclays Africa Technologies",
   "license": "MIT",

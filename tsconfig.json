@@ -8,6 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "importHelpers": true,
+    "noStrictGenericChecks": true,
     "strictNullChecks": false,
     "lib": [
       "dom",

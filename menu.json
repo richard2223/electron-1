@@ -5,7 +5,7 @@
             "moduleUrl": "http://localhost:4200/module.js#InfoModule",
             "components": [
                 {
-                    "title": "Welcome",
+                    "title": "Welcome Test",
                     "routerPath": "/",
                     "icon": "fa fa-users",
                     "roles": []
