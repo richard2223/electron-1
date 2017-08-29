@@ -31,7 +31,7 @@ export const initialState: InfoState = {
  * @param action The action we use to change the state
  * @return The new instance of UserState 
  */
-export function reducer (state = initialState, action: info.Actions): InfoState {
+export function reducer (state = initialState, action: Action): InfoState {
     switch (action.type) {
         
         case info.INFO_LOAD_SUCCESS:

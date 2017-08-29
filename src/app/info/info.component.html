@@ -1,6 +1,6 @@
 <div class="content">
     <div class="col-md-12">
-        <h2>Welcome to the Micro-ui Starter Project</h2>
+        <h1>Welcome to the Micro-UI Starter Project</h1>
         <hr/>
         <div class="hpanel">
             <div class="panel-body">
@@ -29,6 +29,19 @@
                     <li>Steps regarding application deployment</li>
                     <li>Guidelines for contributing back to the component Library</li>
                 </ul>
+                <br/>
+                <h2>REDUX store</h2>
+                <hr/>
+                <h3>Information from Info module</h3>
+                <h4>Project Info (from local store) </h4>
+                <h6>Name: <b>{{(info$ | async)?.projectName}}</b></h6>
+                <h6>Version: <b>{{(info$ | async)?.projectVersion}}</b></h6>
+                <hr>
+                <h3>Information from Home module</h3>
+                <h4>User Info (from application store) </h4>
+                <h6>Username: <b>{{(user$ | async)?.username}}</b></h6>
+                <h6>First Name: <b>{{(user$ | async)?.firstName}}</b></h6>
+                <h6>Last Name: <b>{{(user$ | async)?.lastName}}</b></h6>
             </div>
         </div>
     </div>

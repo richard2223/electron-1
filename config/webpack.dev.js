@@ -15,14 +15,18 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 3000;
 
-const METADATA = webpackMerge(commonConfig({ env: ENV }).metadata, {
+const METADATA = webpackMerge(commonConfig({
+  env: ENV
+}).metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV
 });
 
 module.exports = function (options) {
-  return webpackMerge(commonConfig({ env: ENV }), {
+  return webpackMerge(commonConfig({
+    env: ENV
+  }), {
     devtool: 'cheap-module-source-map',
     output: {
       path: helpers.root('dist'),
@@ -34,8 +38,7 @@ module.exports = function (options) {
 
     module: {
 
-      rules: [
-        {
+      rules: [{
           test: /\.css$/,
           use: ['style-loader', 'css-loader'],
           include: [helpers.root('src', 'styles')]
@@ -88,6 +91,21 @@ module.exports = function (options) {
             console.log('from here Served /serve/menu');
           });
         });
+
+        // For example, to define custom handlers for some paths:
+        app.get('/.env', function (req, res) {
+          fs.readFile('.env', 'utf8', (err, data) => {
+            if (err) throw err;
+            // Convert key=value into json
+            var json = data.split('\n').reduce(function (o, pair) {
+              pair = pair.split('=');
+              return o[pair[0].trim()] = pair[1].trim(), o;
+            }, {});
+
+            res.json(json);
+            console.log('Served /.env', json);
+          });
+        });
       },
       proxy: {
         "/serve/menu": {
@@ -100,4 +118,3 @@ module.exports = function (options) {
     }
   });
 }
-
