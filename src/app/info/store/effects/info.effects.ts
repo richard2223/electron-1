@@ -10,7 +10,7 @@ import { Action } from '@ngrx/store';
 import { Effect, Actions } from '@ngrx/effects';
 
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/switchMap';
+import '../../../rxjs-operators';
 
 import { InfoService } from '../../services/info.service';
 import { Info } from '../../model/info';
@@ -48,5 +48,6 @@ export class InfoEffects {
     load$: Observable<Action> = this.actions$
         .ofType(info.INFO_LOAD)
         .switchMap(() => this.service.getInfo())
-        .map((value: Info) => new info.InfotLoadSuccessAction(value));
+        .map((value: Info) => new info.InfoLoadSuccessAction(value))
+        .catch((error, caught) => Observable.of(new info.InfoLoadFailAction(error)));
 }

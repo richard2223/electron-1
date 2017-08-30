@@ -10,18 +10,19 @@ import { Info } from '../../model/info';
 
 export const INFO_LOAD = '[Info] load';
 export const INFO_LOAD_SUCCESS = '[Info] load success';
+export const INFO_LOAD_FAIL = '[Info] load fail';
 
 /**
  * Load Info
  */
-export class InfotLoadAction implements Action {
+export class InfoLoadAction implements Action {
     readonly type = INFO_LOAD;
 }
 
 /**
  * Load Info successfully
  */
-export class InfotLoadSuccessAction implements Action {
+export class InfoLoadSuccessAction implements Action {
     readonly type = INFO_LOAD_SUCCESS;
     /**
      * 
@@ -29,3 +30,15 @@ export class InfotLoadSuccessAction implements Action {
      */
     constructor(public payload: Info) { }
 }
+
+/**
+ * Load menu fail action
+ */
+export class InfoLoadFailAction implements Action {
+    readonly type = INFO_LOAD_FAIL;
+    /**
+     * 
+     * @param payload error
+     */
+    constructor(public payload: string) { }
+  }

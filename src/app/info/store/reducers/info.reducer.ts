@@ -36,7 +36,7 @@ export function reducer (state = initialState, action: Action): InfoState {
         
         case info.INFO_LOAD_SUCCESS:
             return { 
-                info: action.payload
+                info: Object.assign({}, action.payload)
             };
 
         default:

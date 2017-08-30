@@ -2,11 +2,12 @@ const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge');
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 
-
+const Dotenv = require('dotenv-webpack');
 const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+const TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 
 const path = require('path');
 const fs = require('fs');
@@ -88,6 +89,14 @@ module.exports = function (options) {
               if (err) throw err;
               res.json(JSON.parse(data));
               console.log('from here Served /serve/menu');
+            });
+          });
+
+          app.get('/api/info', function (req, res) {
+            fs.readFile('info.data.json', 'utf8', (err, data) => {
+              if (err) throw err;
+              res.json(JSON.parse(data));
+              console.log('from here Served /api/info');
             });
           });
 

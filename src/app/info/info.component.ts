@@ -65,6 +65,6 @@ export class InfoComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.store.dispatch(new info.InfotLoadAction());
+        this.store.dispatch(new info.InfoLoadAction());
     }
 }

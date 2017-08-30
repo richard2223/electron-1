@@ -6,6 +6,7 @@
  * found in the LICENSE file
  */
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
 import { Observable } from "rxjs/Observable";
 import { Subscriber } from "rxjs/Subscriber";
@@ -16,14 +17,9 @@ import { Info } from '../model/info';
 @Injectable()
 export class InfoService {
 
+    constructor(private http: Http) {}
+
     getInfo() {
-        return Observable.create((sub: Subscriber<Info>) => {
-            let info: Info = {
-                projectName: 'Home',
-                projectVersion: '1.0.0'
-            };
-            sub.next(info);
-            sub.complete();
-        });
+        return this.http.get('/api/info').map(res => res.json());
     }
 }
