@@ -23,6 +23,10 @@ import { InfoComponent } from './info.component';
  */
 import { InfoService } from './services/info.service';
 
+import { BuxComponentsModule } from 'bux-components';
+import { Ng2BootstrapModule } from 'ngx-bootstrap';
+import { WizardModule, WizardStepComponent } from '@mechano/components';
+
 declare var global: any;
 type CreateReducer = (asyncReducers: any) => ActionReducer<any>;
 
@@ -31,6 +35,9 @@ type CreateReducer = (asyncReducers: any) => ActionReducer<any>;
         CommonModule,
         FormsModule,
         RouterModule.forChild(routes),
+        BuxComponentsModule,
+        Ng2BootstrapModule.forRoot(),
+        WizardModule,
 
         /**
          * StoreModule.provideStore is imported once in the root module, accepting a reducer
@@ -49,7 +56,7 @@ type CreateReducer = (asyncReducers: any) => ActionReducer<any>;
          *
          * See: https://github.com/ngrx/effects/blob/master/docs/api.md#run
          */
-        EffectsModule.run(InfoEffects)
+        EffectsModule.run(InfoEffects),
     ],
     declarations: [
         InfoComponent
