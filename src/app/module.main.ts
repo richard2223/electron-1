@@ -4,4 +4,4 @@ export {BASModule} from './bas/basprocessing.module';
 
 
 require('bootstrap-loader');
-import '../styles/styles.scss';
+import 'style-loader!./../styles/styles.scss';

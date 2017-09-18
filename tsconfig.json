@@ -25,10 +25,11 @@
       "uglify-js",
       "webpack"
     ],
+    "baseUrl": ".",
     "paths": {
-      "@angular/*": [
-        "../node_modules/@angular/*"
-      ]
+      "@api/*": ["../node_modules/@celine/frontdoor/src/app/celine/*"],
+      "@makola/*": ["../node_modules/@celine/frontdoor/src/app/makola/*"],
+      "@threshold/*": ["../node_modules/@celine/frontdoor/src/app/threshold/*"]
     }
   },
   "exclude": [

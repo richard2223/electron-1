@@ -9,9 +9,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CheckerPlugin = require('awesome-typescript-loader').CheckerPlugin;
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-
-
-
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const METADATA = {
     title: 'Micro UI project',
@@ -31,7 +29,7 @@ module.exports = function (options) {
         },
 
         resolve: {
-            extensions: ['.ts', '.js', '.json'],
+            extensions: ['.ts', '.js', '.css', '.scss', '.json'],
             modules: [helpers.root('src'), helpers.root('node_modules')],
         },
 
@@ -49,13 +47,12 @@ module.exports = function (options) {
                 },
                 {
                     test: /\.css$/,
-                    use: ['to-string-loader', 'css-loader'],
-                    exclude: [helpers.root('src', 'styles')]
+                    use: ['raw-loader'],
                 },
                 {
                     test: /\.scss$/,
-                    use: ['to-string-loader', 'css-loader', 'sass-loader'],
-                    exclude: [helpers.root('src', 'styles')]
+                    use: ['raw-loader', 'sass-loader']
+
                 },
                 {
                     test: /bootstrap\/dist\/js\/umd\//,
@@ -70,15 +67,21 @@ module.exports = function (options) {
                     use: 'file-loader'
                 },
                 {
-                    test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
+                    test: /\.(ttf|eot|svg)(\?v=.+)?$/,
                     use: 'file-loader'
-                }
+                },
+                {
+                    test: /\.woff(2)?(\?v=.+)?$/,
+                    use: 'url-loader?limit=10000&mimetype=application/font-woff'
+                },
+
 
             ],
 
         },
 
         plugins: [
+            new ExtractTextPlugin("styles.css"),
             new CheckerPlugin(),
             new CommonsChunkPlugin({
                 name: 'polyfills',

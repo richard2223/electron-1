@@ -1,6 +1,6 @@
 <div class="content">
     <div class="col-md-12">
-        <h2>Welcome to the Micro-ui Starter Project</h2>
+        <h2>Celine</h2>
         <hr/>
         <div class="hpanel">
             <div class="panel-body">
@@ -29,6 +29,100 @@
                     <li>Steps regarding application deployment</li>
                     <li>Guidelines for contributing back to the component Library</li>
                 </ul>
+                <br/>
+                <h2>REDUX store</h2>
+                <hr/>
+                <h3>Information from Info module</h3>
+                <h4>Project Info (from local store) </h4>
+                <h6>Name: <b>{{(info$ | async)?.projectName}}</b></h6>
+                <h6>Version: <b>{{(info$ | async)?.projectVersion}}</b></h6>
+                <hr>
+                <h3>Information from Home module</h3>
+                <h4>User Info (from application store) </h4>
+                <h6>Username: <b>{{(user$ | async)?.username}}</b></h6>
+                <h6>First Name: <b>{{(user$ | async)?.firstName}}</b></h6>
+                <h6>Last Name: <b>{{(user$ | async)?.lastName}}</b></h6>
+            </div>
+        </div>
+        <hr/>
+        <div class="hpanel">
+            <div class="panel-body">
+                <h2>Font Awesome</h2>
+                Calendar Icon: <i class="fa fa-calendar" aria-hidden="true"></i>
+            </div>
+        </div>
+        <hr/>
+        <div class="hpanel">
+            <div class="panel-body">
+                <h2>Bux Components - Modal</h2>
+                <button type="button" class="btn btn-sm btn-primary" (click)="infoModal.show()">Info modal</button>
+
+                <div class="modal fade info" bsModal #infoModal="bs-modal" tabindex="-1">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <i class="fa fa-info-circle" aria-hidden="true"></i>
+
+                                <button type="button" class="close pull-right" aria-label="Close" (click)="infoModal.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                            </div>
+                            <div class="modal-body">
+                                <h5> Your heading text here</h5>
+                                <p>Place your customised text here</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-primary secondary-button">Secondary</button>
+                                <button type="button" class="btn btn-primary">Primary</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hpanel">
+            <div class="panel-body">
+                <h2>Bux Components - Wizard</h2>
+                <bux-wizard (onStepChanged)="onStepChanged($event)">
+                    <bux-wizard-step [title]="'Step1'" [showPrev]="false" (onNext)="onStep1Next($event)">
+                        <h1>Content for Wizard</h1>
+                    </bux-wizard-step>
+                    <bux-wizard-step [title]="'Step2'" [showNext]="step2.showNext" [showPrev]="true" (onNext)="onStep2Next($event)">
+                        <h1>Step2</h1>
+                        <p class="lead">You can also control when to show/hide navigation buttons.</p>
+                    </bux-wizard-step>
+                    <bux-wizard-step [title]="'Step3'" (onNext)="onStep3Next($event)">
+                        <h1>Step3</h1>
+                        <p class="lead">There can also be secret steps included - use base on condition</p>
+                    </bux-wizard-step>
+                    <bux-wizard-step [title]="'Step4'" (onNext)="onStep4Next($event)">
+                        <h1>Step4</h1>
+                        <p class="lead">You may have a maximum of 5 steps and a minimum of 2.</p>
+                    </bux-wizard-step>
+                    <bux-wizard-step [title]="'Step5'" [hidden]="!showSecret" (onComplete)="onComplete($event)">
+                        <div [ngSwitch]="isCompleted">
+                            <div *ngSwitchDefault>
+                                <h1>Step5</h1>
+                                <p class="lead">This is the final step. </p>
+                            </div>
+                            <div *ngSwitchCase="true">
+                                <h4>Thank you. You have completed all the steps.</h4>
+                            </div>
+                        </div>
+                    </bux-wizard-step>
+                </bux-wizard>
+            </div>
+        </div>
+
+        <div class="hpanel">
+            <div class="panel-body">
+                <h2>Bux Date Picker</h2>
+                <div class="col-lg-3">
+                    <bux-date-picker (dateChange)="setStartDate($event)" [label]="'Start Date'"></bux-date-picker>
+                </div>
+                <div class="col-lg-3">
+                    <bux-date-picker (dateChange)="setEndDate($event)" [label]="'End Date'" [minDate]="startDate"></bux-date-picker>
+                </div>
             </div>
         </div>
     </div>
