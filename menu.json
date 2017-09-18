@@ -1,0 +1,47 @@
+{
+    "portlets": [
+        {
+            "routerPath": "info",
+            "moduleUrl": "http://localhost:4200/module.js#InfoModule",
+            "components": [
+                {
+                    "title": "Welcome Test",
+                    "routerPath": "/",
+                    "icon": "fa fa-users",
+                    "roles": []
+                }
+            ]
+        },
+        {
+            "routerPath": "sample",
+            "moduleUrl": "http://localhost:4200/module.js#SampleModule",
+            "components": [
+                {
+                    "title": "Features",
+                    "routerPath": "/features",
+                    "icon": "fa fa-globe",
+                    "roles": []
+                },
+                {
+                    "title": "To do App",
+                    "routerPath": "/todo",
+                    "icon": "fa fa-cogs",
+                    "roles": []
+                }
+            ]
+        },
+        {
+            "routerPath": "BAS",
+            "moduleUrl": "http://localhost:4200/module.js#BASModule",
+            "components": [
+                {
+                    "title": "BAS File Processing",
+                    "routerPath": "/",
+                    "icon": "fa fa-folder-open-o",
+                    "roles": []
+                }
+
+            ]
+        }
+    ]
+}
