@@ -24,13 +24,7 @@
       "source-map",
       "uglify-js",
       "webpack"
-    ],
-    "baseUrl": ".",
-    "paths": {
-      "@api/*": ["../node_modules/@celine/frontdoor/src/app/celine/*"],
-      "@makola/*": ["../node_modules/@celine/frontdoor/src/app/makola/*"],
-      "@threshold/*": ["../node_modules/@celine/frontdoor/src/app/threshold/*"]
-    }
+    ]
   },
   "exclude": [
     "node_modules",

@@ -1,7 +1,2 @@
-@import '_variables.scss';
-@import '_general.scss';
-$theme-font-path: '../../node_modules/@mechano/barclays-theme/src/mechano/fonts/theme-font';
-
-@import '~@mechano/barclays-theme/src/mechano/fonts/fonts';
-@import '~@mechano/barclays-theme/src/mechano/mechano';
-@import '~@bux/style-bux-components/src/bux';
+@import 'variables';
+@import 'general';

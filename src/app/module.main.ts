@@ -4,4 +4,5 @@ export {BASModule} from './bas/basprocessing.module';
 
 
 require('bootstrap-loader');
-import 'style-loader!./../styles/styles.scss';
+import '../styles/styles.scss';
+import '../../node_modules/datatables.net-dt/css/jquery.dataTables.css';

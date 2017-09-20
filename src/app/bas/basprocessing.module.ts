@@ -3,7 +3,8 @@ import {RouterModule} from "@angular/router";
 import {AngularBasicModalModule} from "angular-basic-modal";
 import {TradeChannelRoutes} from "./basprocessing.routing";
 import {BASFileProcessorComponent} from "./fileprocessor/fileprocessor.component";
-import { DataTablesModule } from 'angular-datatables';
+import {DataTablesModule} from "angular-datatables";
+import {NgxElectronModule} from "ngx-electron";
 
 
 @NgModule({
@@ -12,12 +13,13 @@ import { DataTablesModule } from 'angular-datatables';
 
     ],
     exports: [
-        BASFileProcessorComponent
+        BASFileProcessorComponent,
+        DataTablesModule,
+        NgxElectronModule
     ],
     imports: [
         RouterModule.forChild(TradeChannelRoutes),
-        AngularBasicModalModule,
-        DataTablesModule
+        AngularBasicModalModule
 
     ],
     providers: [
